@@ -1,0 +1,27 @@
+{% extends 'app1/layout.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block body %}
+
+  <form class="flex-form" method="post">
+      {% csrf_token %}
+   <p><strong>Регистрация</strong></p>
+    <input type="text" name="username" id="username" placeholder="Имя пользователя">
+    <input type="text" name="FIO" id="FIO" placeholder="ФИО">
+    <label>Ваш отдел</label>
+    <select name="department" id="department">
+        {% for department in departments %}
+            <option value="{{department.id}}" label="{{department.name}}">{{department.id}}</option>
+        {% endfor %}
+    </select>
+    <input type="email" name="mail" id="mail" placeholder="Почта">
+    <input type="text" name="phone" id="phone" placeholder="Телефон">
+    <input type="password" name="password" id="password" placeholder="Пароль">
+    <input type="submit" value="Зарегистрироваться">
+  </form>
+
+  <style>
+
+  </style>
+{% endblock %}

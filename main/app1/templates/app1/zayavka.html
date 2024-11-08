@@ -1,0 +1,28 @@
+{% extends 'app1/layout.html' %}
+
+{% block title %}Формирование заявки{% endblock %}
+
+{% block body %}
+
+  {% if user.is_authenticated %}
+
+      <form class="flex-form" method="post">
+      {% csrf_token %}
+   <p><strong>Формирование заявки</strong></p>
+    <label>Категория</label>
+    <select name="category" id="category">
+
+        {% for category in categories %}
+            <option value="{{category.id}}" label="{{category.name}}">{{category.id}}</option>
+        {% endfor %}
+
+    </select>
+
+          <textarea name="task_message" placeholder="Опишите проблему"></textarea>
+
+    <input type="submit" value="Создать">
+  </form>
+
+  {% endif %}
+
+{% endblock %}

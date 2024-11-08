@@ -1,0 +1,13 @@
+{% extends 'app1/layout.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block body %}
+    <form class="flex-form" method="post">
+      {% csrf_token %}
+   <p><strong>Вход</strong></p>
+    <input type="text" name="username" id="username" placeholder="Имя пользователя">
+    <input type="password" name="password" id="password" placeholder="Пароль">
+    <input type="submit" value="Войти">
+  </form>
+{% endblock %}

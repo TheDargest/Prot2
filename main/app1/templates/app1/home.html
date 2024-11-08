@@ -1,0 +1,38 @@
+{% extends 'app1/layout.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block body %}
+
+<!--    {% if messages %}-->
+<!--    {% for message in messages %}-->
+<!--        <p>{{message}}</p>-->
+<!--    {% endfor %}-->
+<!--    {% endif %}-->
+
+    {% if user.is_authenticated %}
+        <div class="flex-container_home">
+            <h2>Ваши заявки</h2>
+        </div>
+
+        <div class="flex-container_tasks">
+            {% for task in tasks %}
+
+                <div class="task-item">
+                    <h3>Заявка {{task.id}}</h3>
+                    <p>Категория: {{task.id_category.name}}</p>
+                    <p>Статус: {{task.id_status.name}}</p>
+                    <p>{{task.description}}</p>
+                </div>
+
+            {% endfor %}
+        </div>
+
+
+    {% else %}
+
+    <h4>Войдите, чтобы продолжить</h4>
+
+    {% endif %}
+{% endblock %}
+
